@@ -8,4 +8,4 @@ const Home = () => {
     );
   };
   
-  export default LandingPage;
+  export default Home;

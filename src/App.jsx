@@ -1,12 +1,13 @@
-import './App.css'
-import LandingPage from './LandingPage.jsx';
-
+import React from "react";
+import Nav from "./NavComponents/Nav.jsx";
 function App() {
   
 
   return (
     <>
-    <LandingPage />
+    <div className='bg-slate-900 w-full '>
+      <Nav/>
+    </div>
     </>
   )
 }

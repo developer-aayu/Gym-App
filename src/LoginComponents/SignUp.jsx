@@ -23,7 +23,7 @@ const SignUp = () => {
     };
 
     return (
-            <div className="p-8 bg-gray-100 rounded-lg shadow-md">
+            <div className="p-8 bg-gray-100 rounded-lg shadow-md" style={{width: "300px", height: "auto"}}>
                 <h2 className="text-xl font-semibold mb-4">{mode === 'signup' ? 'Sign Up' : 'Login'}</h2>
                 <form onSubmit={handleSubmit}>
                     {mode === 'signup' && (

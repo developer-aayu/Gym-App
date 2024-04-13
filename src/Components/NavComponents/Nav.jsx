@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,10 +54,10 @@ const Nav = () => {
         </div>
         <div className="hidden lg:block">
           <ul className="flex gap-10">
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Home</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Rankings</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Diet</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Profile</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}} ><Link to="/home">Home</Link></li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Rankings</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Diet</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Profile</li>
           </ul>
         </div>
         {isMenuOpen && (

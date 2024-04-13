@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Home from "./Components/NavComponents/Home.jsx";
-import SignUp from "./Components/LoginComponents/SignUp.jsx";
 import Error from './Components/Error/index.jsx'
 import Dashboard from "./Components/Home/Dashboard.jsx";
 import { useAuth } from "./contexts/authContext/index.jsx";
@@ -12,8 +11,7 @@ import {
 } from "react-router-dom";
 export default function appRouter() {
 
-  const { currentUser, userLoggedIn, loading } = useAuth();
-
+  const { userLoggedIn, } = useAuth();
   return (
     <>
         <Router>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,7 +9,7 @@ const Nav = () => {
   };
 
   return (
-    <div className="bg-black w-full sticky top-0">
+    <div className="bg-black w-full sticky top-0 z-index-1">
       <nav className="w-4/5 mx-auto py-5 text-white text-lg flex justify-between items-center">
         <div>
           <span className="font-black text-3xl inline-block hover:scale-110 duration-300">Logo</span>
@@ -54,10 +54,10 @@ const Nav = () => {
         </div>
         <div className="hidden lg:block">
           <ul className="flex gap-10">
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}} ><Link to="/home">Home</Link></li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Rankings</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Diet</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" style={{cursor:"pointer"}}>Profile</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white"><Link to="/home">Home</Link></li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Rankings</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Diet</li>
+            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white"><Link to="/profile">Profile</Link></li>
           </ul>
         </div>
         {isMenuOpen && (

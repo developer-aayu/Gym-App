@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Nav from "./Nav.jsx";
-import GymImg from "../assets/gymapp-main-wallpaper.jpg";
-import AuthModal from './AuthModal';
+import GymImg from "../../assets/gymapp-main-wallpaper.jpg";
+import AuthModal from './AuthModal.jsx';
 import Card from './FeatureCard.jsx';
 import Footer from './Footer.jsx';
-import DashImg from '../assets/dashimg.jpg';
-import LeaderImg from '../assets/leaderboardimg.jpg';
-import WorkoutImg from '../assets/workoutimg.jpg';
-import ProfileImg from '../assets/profileimg.jpg';
+import DashImg from '../../assets/dashimg.jpg';
+import LeaderImg from '../../assets/leaderboardimg.jpg';
+import WorkoutImg from '../../assets/workoutimg.jpg';
+import ProfileImg from '../../assets/profileimg.jpg';
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

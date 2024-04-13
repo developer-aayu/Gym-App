@@ -1,13 +1,15 @@
 import React from "react";
-import Home from "./NavComponents/Home.jsx";
-function App() {
-  
+import AppRouter from './appRouter.jsx';
+import AuthProvider  from "./contexts/authContext/index.jsx";
+function App() {  
 
   return (
     <>
-      <Home/>
+    <AuthProvider>
+        <AppRouter />
+    </AuthProvider>
     </>
-  )
+  );
 }
 
 export default App

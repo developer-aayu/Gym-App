@@ -1,8 +1,8 @@
-import React, { useState , useContext} from 'react';
-import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword } from '../../contexts/authContext/auth';
+import React, { useState , useContext, createContext} from 'react';
+import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword  } from '../../contexts/authContext/auth';
 import { useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
+const SignUp = ({location="/home"}) => {
     const navigate = useNavigate();
     const [mode, setMode] = useState('signup');
     const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const SignUp = () => {
         e.preventDefault();
         // Handle form submission based on the mode (signup or login)
         if(mode === "signup"){
-            await doCreateUserWithEmailAndPassword(formData.email , formData.password).then(()=>{
+            await doCreateUserWithEmailAndPassword(formData.email , formData.password , formData.username).then(()=>{
                 alert("You have been Succesfully Logged in")
             }).catch((err)=>{
                 console.log(err)
@@ -36,7 +36,8 @@ const SignUp = () => {
             } catch (error) {
                 console.error('Error signing in:', error);
             }
-            navigate('/home');
+            // navigate(location);
+            window.location.reload();
         }
     };
     const gopogleSignin = async (e)=>{
@@ -44,7 +45,9 @@ const SignUp = () => {
         await doSigninWithGoogle().catch(err =>{
             console.log(err);
         });
-        navigate('/home');
+        // navigate(location);
+        window.location.reload();
+
     }
     return (
             <div className="p-8 bg-gray-100 rounded-lg shadow-md" style={{width: "300px", height: "auto"}}>

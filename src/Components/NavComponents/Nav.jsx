@@ -12,7 +12,7 @@ const Nav = () => {
     <div className="bg-black w-full sticky top-0 z-index-1">
       <nav className="w-4/5 mx-auto py-5 text-white text-lg flex justify-between items-center">
         <div>
-          <span className="font-black text-3xl inline-block hover:scale-110 duration-300">Logo</span>
+          <span className="font-black text-3xl inline-block hover:scale-110 duration-300" style={{cursor:"pointer"}}><Link to="/">LOGO</Link></span>
         </div>
         <div className="lg:hidden">
           <button

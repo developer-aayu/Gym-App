@@ -1,5 +1,5 @@
-import React, { useState , useContext, createContext} from 'react';
-import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword  } from '../../contexts/authContext/auth';
+import React, { useState } from 'react';
+import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword , doSigninWithNumber } from '../../contexts/authContext/auth';
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = ({location="/home"}) => {
@@ -11,8 +11,8 @@ const SignUp = ({location="/home"}) => {
         password: ''
     });
 
-    
-    const handleChange = (e) => {
+
+const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -36,8 +36,10 @@ const SignUp = ({location="/home"}) => {
             } catch (error) {
                 console.error('Error signing in:', error);
             }
-            // navigate(location);
-            window.location.reload();
+            if(window.location.href === "http://localhost:5173/")
+                navigate(location);
+            else
+                window.location.reload();
         }
     };
     const gopogleSignin = async (e)=>{
@@ -45,9 +47,18 @@ const SignUp = ({location="/home"}) => {
         await doSigninWithGoogle().catch(err =>{
             console.log(err);
         });
-        // navigate(location);
-        window.location.reload();
+        if(window.location.href === "http://localhost:5173/")
+            navigate(location);
+        else
+            window.location.reload();
+    }
 
+    const numberSignIn = async (e)=>{
+        e.preventDefault();
+        await doSigninWithNumber(formData.password)
+            .then(()=>{
+                window.location.reload();
+            })
     }
     return (
             <div className="p-8 bg-gray-100 rounded-lg shadow-md" style={{width: "300px", height: "auto"}}>
@@ -77,7 +88,7 @@ const SignUp = ({location="/home"}) => {
                 {mode === 'signup' && (
                     <div className="mt-4 flex flex-col justify-center items-center gap-3">
                         <button className="bg-red-500 text-white py-2 px-4 rounded-md mr-2" onClick={gopogleSignin}>Continue with Google</button>
-                        <button className="bg-yellow-500 text-white py-2 px-4 rounded-md">Continue with Phone Number</button>
+                        <button className="bg-yellow-500 text-white py-2 px-4 rounded-md" onClick={numberSignIn}>Continue with Phone Number</button>
                     </div>
                 )}
             </div>

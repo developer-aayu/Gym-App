@@ -1,5 +1,5 @@
 import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup, updatePassword, sendEmailVerification} from "firebase/auth";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup, updatePassword, sendEmailVerification ,signInWithPhoneNumber} from "firebase/auth";
 
 
 export const doCreateUserWithEmailAndPassword = async (email,password,username)=>{
@@ -53,8 +53,35 @@ export const doSignInWithEmailAndPassword = async (email,password)=>{
 export const doSigninWithGoogle = async ()=>{
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(auth ,provider);
-    // user.name   to retrive user data
+    fetch("http://localhost:5000/user/googleSignin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({userID : result.user.uid , signIn : "google"}),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Response from server:", data);
+      })
+      .catch((error) => {
+        console.error("There was a problem with your fetch operation:", error);
+      });
     return result;
+}
+
+export const doSigninWithNumber = async (phoneNumber)=>{
+  signInWithPhoneNumber(auth, phoneNumber)
+    .then((confirmationResult) => {
+       window.confirmationResult = confirmationResult;
+    }).catch((error) => {
+      console.log({Error:error})
+    });
 }
 
 export const doSignOut = async ()=>{

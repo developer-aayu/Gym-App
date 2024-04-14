@@ -1,15 +1,39 @@
 import { auth } from "../../firebase";
-import { useContext } from "react";
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword , GoogleAuthProvider, signInWithPopup, updatePassword, sendEmailVerification} from "firebase/auth";
 
 
-export const doCreateUserWithEmailAndPassword = async (email,password)=>{
+export const doCreateUserWithEmailAndPassword = async (email,password,username)=>{
     return createUserWithEmailAndPassword(auth ,email,password).then((userCredential) => {
         const user = userCredential.user;
-        console.log(user)
+          fetch("http://localhost:5000/user/save", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email    : email,
+              password : password,
+              username : username,
+              uniqueID : user.uid
+            }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              console.log("data :", data);
+            })
+            .catch((error) => {
+              console.error(
+                "A problem Occured while Svaing Data to the database",
+                error
+              );
+            }).uid;
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.log({errorCode:errorMessage})
       });

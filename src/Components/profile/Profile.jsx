@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import Nav from "../NavComponents/Nav.jsx";
-import Footer from "../NavComponents/Footer.jsx";
 import { doSignOut } from "../../contexts/authContext/auth";
 import { FaEdit } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
@@ -46,7 +44,6 @@ const Profile = () => {
 
     return (
         <>
-            <Nav />
             <div className='flex flex-col gap-20 justify-center items-center'>
                 <div className='bg-gray-100 p-10 my-10' style={{ width: "90%" }}>
                     <div className='flex flex-row-reverse justify-between items-center'>
@@ -68,7 +65,7 @@ const Profile = () => {
                         <h2 className='text-2xl font-semibold'>Personal Records :</h2>
                         <hr className='border border-solid border-gray-500 border-b-1 mt-5' />
                         <div>
-                            <Bar
+                            {/* <Bar
                                 data={personalRecordsData}
                                 options={{
                                     maintainAspectRatio: false,
@@ -80,14 +77,13 @@ const Profile = () => {
                                         }],
                                     },
                                 }}
-                            />
+                            /> */}
                         </div>
                     </div>
 
                     <button className="bg-gray-500 text-white py-2 px-6 rounded-md flex gap-2 items-center" onClick={doSignOut}>Log out <CiLogout className='text-xl' /></button>
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

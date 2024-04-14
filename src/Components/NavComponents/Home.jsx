@@ -3,7 +3,6 @@ import Nav from "./Nav.jsx";
 import GymImg from "../../assets/gymapp-main-wallpaper.jpg";
 import AuthModal from './AuthModal.jsx';
 import Card from './FeatureCard.jsx';
-import Footer from './Footer.jsx';
 import DashImg from '../../assets/dashimg.jpg';
 import LeaderImg from '../../assets/leaderboardimg.jpg';
 import WorkoutImg from '../../assets/workoutimg.jpg';
@@ -21,7 +20,6 @@ const Home = () => {
   };
   return (
     <>
-      <Nav />
       <div className="bg-cover bg-center w-full text-white font-mono flex flex-col justify-center px-10" style={{ backgroundImage: `url(${GymImg})`, height: "100vh" }}>
         <div>
         <h2 className="text-5xl font-semibold">YOU ARE WELCOME HERE</h2>
@@ -46,7 +44,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

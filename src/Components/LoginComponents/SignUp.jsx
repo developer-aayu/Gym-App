@@ -1,6 +1,8 @@
 import React, { useState , useContext, createContext} from 'react';
 import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword  } from '../../contexts/authContext/auth';
 import { useNavigate } from 'react-router-dom';
+import { FcGoogle } from "react-icons/fc";
+import { FaMobile } from "react-icons/fa";
 
 const SignUp = ({location="/home"}) => {
     const navigate = useNavigate();
@@ -76,8 +78,8 @@ const SignUp = ({location="/home"}) => {
                 </div>
                 {mode === 'signup' && (
                     <div className="mt-4 flex flex-col justify-center items-center gap-3">
-                        <button className="bg-red-500 text-white py-2 px-4 rounded-md mr-2" onClick={gopogleSignin}>Continue with Google</button>
-                        <button className="bg-yellow-500 text-white py-2 px-4 rounded-md">Continue with Phone Number</button>
+                        <button className="shadow-lg text-white py-3 rounded-md mr-2 flex items-center justify-center text-2xl" onClick={gopogleSignin} style={{width: "250px"}}><FcGoogle /></button>
+                        <button className="shadow-lg py-3 rounded-md mr-2 flex items-center justify-center text-2xl" style={{width: "250px"}}><FaMobile /> <span className='text-sm'>Phone number</span></button>
                     </div>
                 )}
             </div>

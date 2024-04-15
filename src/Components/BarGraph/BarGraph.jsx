@@ -1,7 +1,14 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS} from "chart.js";
+import { CategoryScale , LinearScale , BarElement} from "chart.js"; 
+
 
 const BarGraph = ({ sourceData }) => {
+  ChartJS.register(CategoryScale);
+  ChartJS.register(LinearScale);
+  ChartJS.register(BarElement);
+
   return (
     <>
       <div className="" style={{ width: "700px", height: "300px" }}>
@@ -32,6 +39,7 @@ const BarGraph = ({ sourceData }) => {
       </div>
     </>
   );
+  
 };
 
 export default BarGraph;

@@ -1,5 +1,5 @@
-import React, { useState , useContext, createContext} from 'react';
-import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword  } from '../../contexts/authContext/auth';
+import React, { useState } from 'react';
+import { doSignInWithEmailAndPassword ,doSigninWithGoogle ,doCreateUserWithEmailAndPassword , doSigninWithNumber } from '../../contexts/authContext/auth';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaMobile } from "react-icons/fa";
@@ -13,8 +13,8 @@ const SignUp = ({location="/home"}) => {
         password: ''
     });
 
-    
-    const handleChange = (e) => {
+
+const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -38,8 +38,10 @@ const SignUp = ({location="/home"}) => {
             } catch (error) {
                 console.error('Error signing in:', error);
             }
-            // navigate(location);
-            window.location.reload();
+            if(window.location.href === "http://localhost:5173/")
+                navigate(location);
+            else
+                window.location.reload();
         }
     };
     const gopogleSignin = async (e)=>{
@@ -47,9 +49,18 @@ const SignUp = ({location="/home"}) => {
         await doSigninWithGoogle().catch(err =>{
             console.log(err);
         });
-        // navigate(location);
-        window.location.reload();
+        if(window.location.href === "http://localhost:5173/")
+            navigate(location);
+        else
+            window.location.reload();
+    }
 
+    const numberSignIn = async (e)=>{
+        e.preventDefault();
+        await doSigninWithNumber(formData.password)
+            .then(()=>{
+                window.location.reload();
+            })
     }
     return (
             <div className="p-8 bg-gray-100 rounded-lg shadow-md" style={{width: "300px", height: "auto"}}>

@@ -1,7 +1,10 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js";
+import { ArcElement } from "chart.js";
 
 const PieChart = ({ PieSourceData }) => {
+  ChartJS.register(ArcElement);
   return (
     <>
       <div className="bg-black" style={{ width: "700px", height: "300px" }}>
@@ -28,10 +31,17 @@ const PieChart = ({ PieSourceData }) => {
           options={{
             plugins: {
               title: {
+                display : true,
                 text: "Revenue Sources",
               },
             },
+            elements: {
+              arc: {
+                backgroundColor: 'rgba(255, 255, 255, 0.6)' 
+              }
+            }
           }}
+          
         />
       </div>
     </>

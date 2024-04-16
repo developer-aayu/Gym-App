@@ -1,14 +1,14 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js";
+import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { ArcElement } from "chart.js";
 
 const PieChart = ({ PieSourceData }) => {
   ChartJS.register(ArcElement);
   return (
     <>
-      <div className="bg-black" style={{ width: "700px", height: "300px" }}>
-        <Doughnut
+      <div className="flex items-center justify-center" style={{ width: "700px", height: "400px" }}>
+      <Doughnut
           data={{
             labels: PieSourceData.map((data) => data.label),
             datasets: [
@@ -31,17 +31,11 @@ const PieChart = ({ PieSourceData }) => {
           options={{
             plugins: {
               title: {
-                display : true,
-                text: "Revenue Sources",
+                text: "Food Intake",
               },
             },
-            elements: {
-              arc: {
-                backgroundColor: 'rgba(255, 255, 255, 0.6)' 
-              }
-            }
+            
           }}
-          
         />
       </div>
     </>

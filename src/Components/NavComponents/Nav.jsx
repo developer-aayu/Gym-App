@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Profile from "../profile/Profile.jsx";
+import Profile from "../profile/Profile";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,20 +12,6 @@ const Nav = () => {
   const WelcomeMessage = ({ username }) => {
     return (
       <p className='text-black text-3xl font-bold'>Welcome, {username}</p>
-    );
-  };
-  const PersonalDetails = ({ age, height, weight, gender, BMI, health, fitnessLevel, goal }) => {
-    return (
-      <ul className='flex flex-col justify-center items-center gap-5 text-xl'>
-        <li>Age : {age}</li>
-        <li>Height : {height} cm</li>
-        <li>Weight : {weight} kg</li>
-        <li>Gender : {gender}</li>
-        <li>BMI : {BMI}</li>
-        <li>Health : {health}</li>
-        <li>Fitness Level : {fitnessLevel}</li>
-        <li>Goal : {goal}</li>
-      </ul>
     );
   };
 
@@ -94,13 +80,12 @@ const Nav = () => {
             </li>
 
             {isProfileOpen && (
-              <div className="absolute top-16 right-0 w-1/2 bg-black text-white profile-dropdown">
-                <div className='flex flex-col gap-20 justify-center items-center overflow-y-scroll'>
-                  <Profile/>
-                </div>
-                <button onClick={() => setIsProfileOpen(false)} className="text-white py-2 w-full focus:outline-none hover:bg-gray-800">Close</button>
+              <div className="absolute top-full right-0 bg-black text-white profile-dropdown px-20 py-10 overflow-y-auto max-h-[90vh] z-10">
+                <Profile />
               </div>
+
             )}
+
           </ul>
         </div>
       </nav>

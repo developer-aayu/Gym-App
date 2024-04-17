@@ -19,7 +19,7 @@ export default function appRouter() {
       <Router>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={userLoggedIn ? <Dashboard /> : <Home />} />
           <Route
             path="/home"
             element={userLoggedIn ? <Dashboard /> : <Error />}

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Profile from "../profile/Profile";
+import { useAuth } from "../../contexts/authContext";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const { userLoggedIn, } = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,6 +17,7 @@ const Nav = () => {
     );
   };
 
+  const navTabsStyle = "opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white";
 
   return (
     <div className="bg-black w-full sticky top-0">
@@ -72,10 +75,16 @@ const Nav = () => {
         </div>
         <div className="hidden lg:block">
           <ul className="flex gap-10">
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white"><Link to="/home">Home</Link></li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Rankings</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white">Diet</li>
-            <li className="opacity-70 border-b border-transparent transition-opacity duration-300 hover:opacity-100 hover:border-white" onClick={() => { setIsProfileOpen(!isProfileOpen); console.log(isProfileOpen) }}>
+            <li className={navTabsStyle}><Link to="/home">Home</Link></li>
+            <li className={navTabsStyle}>Rankings</li>
+            <li className={navTabsStyle}>Diet</li>
+            <li className={navTabsStyle} style={{cursor:"pointer"}} onClick={() => 
+            { 
+              if(userLoggedIn)
+                setIsProfileOpen(!isProfileOpen);
+              // else
+              
+            }}>
               Profile
             </li>
 

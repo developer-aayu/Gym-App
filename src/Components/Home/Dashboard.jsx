@@ -2,6 +2,7 @@ import React from "react";
 import BarGraph from "../BarGraph/BarGraph.jsx";
 import PieChart from "../BarGraph/PieChart.jsx";
 import { FaEdit } from "react-icons/fa";
+import { doSignOut } from "../../contexts/authContext/auth";
 
 const Dashboard = () => {
     const SourceData = [
@@ -12,8 +13,8 @@ const Dashboard = () => {
         { label: "Deadlift", value: 150 }
       ];
     const PieSourceData = [
-        { label: "Protein", value: 80 },
-        { label: "Carbohydrates", value: 240 },
+        { label: "Protein", value: 40 },
+        { label: "Carbohydrates", value: 40 },
         { label: "Fat", value: 30 }
     ];
 
@@ -36,7 +37,9 @@ const Dashboard = () => {
                 </div>
 
             </div>
+            <button className="bg-gray-500 text-white py-2 px-6 rounded-md flex gap-2 items-center" onClick={doSignOut}>Log out</button>
         </div>
+        
     )
 };
 
